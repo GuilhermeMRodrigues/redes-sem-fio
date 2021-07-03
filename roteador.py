@@ -1,4 +1,5 @@
-class Roteador():
+from camadaRede import Rede
+class Roteador(Rede):
     def __init__(obj, id, posX, posY):
         obj.id = id
         obj.posicao = [posX, posY]

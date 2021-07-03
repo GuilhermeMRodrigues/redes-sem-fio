@@ -9,8 +9,7 @@ class CamadaLink(CamadaFisica):
         while(True):
             busyToneVizinhos = 0
             for vizinho in nos[pacote.header_mac[0]].vizinhos:
-                if nos[vizinho.id].busy_tone:
-                    busyToneVizinhos = 1
+                    busyToneVizinhos += nos[vizinho.id].busy_tone
                     
             if busyToneVizinhos:
                 time.sleep(np.random.random_sample())
@@ -30,7 +29,7 @@ class CamadaLink(CamadaFisica):
     def recebeLink(obj, pacote, nos):
         nos[pacote.no_receptor].busy_tone = False
         if(pacote.no_receptor == pacote.header_mac[1] or (pacote.header_mac[1] == -1)):
-            nos[pacote.no_receptor].redeReceptora(pacote, nos)
+            nos[pacote.no_receptor].redeRecebe(pacote, nos)
         pass
 
     
