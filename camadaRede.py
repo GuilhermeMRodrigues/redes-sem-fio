@@ -2,7 +2,6 @@ from camadaLink import CamadaLink
 from scipy.spatial import distance
 import pacotes 
 import copy
-import logging
 
 class Rede(CamadaLink):
     def encontrarVizinhos(obj, id, nos):
@@ -15,7 +14,7 @@ class Rede(CamadaLink):
         envia_pacote = copy.deepcopy(pacote)
         if envia_pacote.dsr[0] == -1:
             if nos[envia_pacote.no_receptor].rotas.get(envia_pacote.header_ip[1]) is None:
-                logging.info("Processo de descobrimento de rota iniciado pelo no["+str(pacote.header_ip[0])+"] para o no["+str(pacote.header_ip[1])+"]")
+                print("Inciando broadcast para todos os vizinhos diretos a partir do no origem: ["+str(pacote.header_ip[0])+"] para o no destino: ["+str(pacote.header_ip[1])+"]")
                 nos[envia_pacote.no_receptor].requisicaoRota(nos, envia_pacote)
                 envia_pacote.dsr = nos[envia_pacote.no_receptor].rotas.get(envia_pacote.header_ip[1])
             else:
@@ -26,41 +25,38 @@ class Rede(CamadaLink):
         pass
     
     def redeRecebe(obj, pacote, nos):
-        logging.info("Pacote["+str(pacote.id)+"]["+str(pacote.tipo_pacote)+"] dado:["+str(pacote.mensagem)+"] originario do no "+str(pacote.header_mac[0])+" recebido pelo no "+str(pacote.no_receptor))
+        print("\nPacote["+str(pacote.id)+"]["+str(pacote.tipo_pacote)+"] mensagem:["+str(pacote.mensagem)+"] originario do no "+str(pacote.header_mac[0])+" recebido pelo no "+str(pacote.no_receptor))
     
         if(pacote.tipo_pacote == "DATA"):
-            print("DATA")
             if(pacote.no_receptor == pacote.header_ip[1]):
-                logging.info("Pacote["+str(pacote.id)+"]["+str(pacote.tipo_pacote)+"]chegou ao destino final "+str(pacote.no_receptor))
-                pass                                                                              #pacote de dado chegou ao destino final
+                print("\nPacote["+str(pacote.id)+"]["+str(pacote.tipo_pacote)+"]chegou ao destino final "+str(pacote.no_receptor))
+                pass                                                                              
             else:
                 nos[pacote.no_receptor].redeEnvia(pacote, nos)
 
         if((pacote.tipo_pacote == "RREQ") and not(pacote.id in nos[pacote.no_receptor].rreq_buffer)):
-            print("RREQ")
             nos[pacote.no_receptor].rreq_buffer.append(pacote.id)
             pacote_copia = copy.deepcopy(pacote)
-            pacote_copia.mensagem.append(pacote.no_receptor) #MENSAGEM RECEBENDO NO?
+            pacote_copia.mensagem.append(pacote.no_receptor) 
             mensagem_copia = copy.deepcopy(pacote_copia.mensagem)
             nos[pacote.no_receptor].preencheTabela(nos, pacote_copia)
-            if(pacote.no_receptor == pacote.header_ip[1]):  #se o no receptor for igual ao no de destino envia ao vizinho que enviou a request um pacote RREP
-                mensagem_copia.reverse() #reverte ordem dos indices RREP
-                rrep = pacotes.Pacotes(pacote.id, pacote.header_ip[1], pacote.header_ip[0], mensagem_copia, "RREP") #envia o caminho reverso RREP
+            if(pacote.no_receptor == pacote.header_ip[1]):  
+                mensagem_copia.reverse() 
+                rrep = pacotes.Pacotes(pacote.id, pacote.header_ip[1], pacote.header_ip[0], mensagem_copia, "RREP") 
                 rrep.dsr = copy.deepcopy(mensagem_copia)
-                nos[pacote.no_receptor].redeEnvia(rrep, nos)                                          #envia rrep
+                nos[pacote.no_receptor].redeEnvia(rrep, nos)                                          
             else:
                 pacote_copia.header_mac = [pacote.no_receptor, -1]
                 nos[pacote.no_receptor].rreq_buffer.append(pacote.id)
-                super().mac(pacote_copia, nos)                                         #reenvia rreq
+                super().mac(pacote_copia, nos)                                         
                 
         if(pacote.tipo_pacote == "RREP" and not(pacote.id in nos[pacote.no_receptor].rrep_buffer)):
-            print("RREP")
             nos[pacote.no_receptor].preencheTabela(nos, pacote) #
             nos[pacote.no_receptor].rrep_buffer.append(pacote.id)
             if(pacote.no_receptor == pacote.header_ip[1]):
-                pass                                                                              #apos a execuçao do dsr, eniva o pacote inicial que está no buffer
+                pass                                                                              
             else:
-                nos[pacote.no_receptor].redeEnvia(pacote, nos)                                           #reenvia rrep
+                nos[pacote.no_receptor].redeEnvia(pacote, nos)                                           
         pass
 
     def requisicaoRota(obj, nos, pacote):
@@ -92,5 +88,5 @@ class Rede(CamadaLink):
                 elif len(nos[pacote.no_receptor].rotas[caminhoDireita[i]]) > len(caminhoDireita[:i+1]):
                     nos[pacote.no_receptor].rotas[caminhoDireita[i]] = caminhoDireita[:i+1]        
 
-        logging.info("Rotas do no "+str(pacote.no_receptor)+": "+str(nos[pacote.no_receptor].rotas))
+        print("\nRotas do no "+str(pacote.no_receptor)+": "+str(nos[pacote.no_receptor].rotas))
         pass

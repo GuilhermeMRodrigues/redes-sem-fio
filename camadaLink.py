@@ -1,7 +1,6 @@
 import time
 import copy
 from camadaFisica import CamadaFisica
-import logging
 import numpy as np
 
 class CamadaLink(CamadaFisica):
@@ -32,4 +31,5 @@ class CamadaLink(CamadaFisica):
             nos[pacote.no_receptor].redeRecebe(pacote, nos)
         pass
 
-    
+
+
