@@ -1,0 +1,99 @@
+Quantidade de nos:  6 
+
+Inciando broadcast para todos os vizinhos diretos a partir do no origem: [0] para o no destino: [3]
+
+Pacote[1][RREQ] mensagem:[[0]] originario do no 0 recebido pelo no 1
+
+Rotas do no 1: {1: 1, 0: [1, 0]}
+
+Pacote[1][RREQ] mensagem:[[0, 1]] originario do no 1 recebido pelo no 0
+
+Pacote[1][RREQ] mensagem:[[0, 1]] originario do no 1 recebido pelo no 2
+
+Rotas do no 2: {2: 2, 1: [2, 1], 0: [2, 1, 0]}
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2]] originario do no 2 recebido pelo no 1
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2]] originario do no 2 recebido pelo no 4
+
+Rotas do no 4: {4: 4, 2: [4, 2], 1: [4, 2, 1], 0: [4, 2, 1, 0]}
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4]] originario do no 4 recebido pelo no 0
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4]] originario do no 4 recebido pelo no 1
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4]] originario do no 4 recebido pelo no 2
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4]] originario do no 4 recebido pelo no 3
+
+Rotas do no 3: {3: 3, 4: [3, 4], 2: [3, 4, 2], 1: [3, 4, 2, 1], 0: [3, 4, 2, 1, 0]}
+
+Pacote[1][RREP] mensagem:[[3, 4, 2, 1, 0]] originario do no 3 recebido pelo no 4
+
+Rotas do no 4: {4: 4, 2: [4, 2], 1: [4, 2, 1], 0: [4, 2, 1, 0], 3: [4, 3]}
+
+Pacote[1][RREP] mensagem:[[3, 4, 2, 1, 0]] originario do no 4 recebido pelo no 2
+
+Rotas do no 2: {2: 2, 1: [2, 1], 0: [2, 1, 0], 4: [2, 4], 3: [2, 4, 3]}
+
+Pacote[1][RREP] mensagem:[[3, 4, 2, 1, 0]] originario do no 2 recebido pelo no 1
+
+Rotas do no 1: {1: 1, 0: [1, 0], 2: [1, 2], 4: [1, 2, 4], 3: [1, 2, 4, 3]}
+
+Pacote[1][RREP] mensagem:[[3, 4, 2, 1, 0]] originario do no 1 recebido pelo no 0
+
+Rotas do no 0: {0: 0, 1: [0, 1], 2: [0, 1, 2], 4: [0, 1, 2, 4], 3: [0, 1, 2, 4, 3]}
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4]] originario do no 4 recebido pelo no 5
+
+Rotas do no 5: {5: 5, 4: [5, 4], 2: [5, 4, 2], 1: [5, 4, 2, 1], 0: [5, 4, 2, 1, 0]}
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4, 5]] originario do no 5 recebido pelo no 1
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4, 5]] originario do no 5 recebido pelo no 2
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2, 4, 5]] originario do no 5 recebido pelo no 4
+
+Pacote[1][RREQ] mensagem:[[0, 1, 2]] originario do no 2 recebido pelo no 5
+
+Pacote[1][RREQ] mensagem:[[0, 1]] originario do no 1 recebido pelo no 3
+
+Pacote[1][RREQ] mensagem:[[0, 1]] originario do no 1 recebido pelo no 4
+
+Pacote[1][RREQ] mensagem:[[0, 1]] originario do no 1 recebido pelo no 5
+
+Pacote[1][RREQ] mensagem:[[0]] originario do no 0 recebido pelo no 3
+
+Pacote[1][RREQ] mensagem:[[0]] originario do no 0 recebido pelo no 4
+
+Pacote[9][DATA] mensagem:[redes] originario do no 0 recebido pelo no 1
+
+Pacote[9][DATA] mensagem:[redes] originario do no 1 recebido pelo no 2
+
+Pacote[9][DATA] mensagem:[redes] originario do no 2 recebido pelo no 4
+
+Pacote[9][DATA] mensagem:[redes] originario do no 4 recebido pelo no 3
+
+Pacote[9][DATA]chegou ao destino final 3
+
+Pacote[3][DATA] mensagem:[sem] originario do no 1 recebido pelo no 2
+
+Pacote[3][DATA] mensagem:[sem] originario do no 2 recebido pelo no 4
+
+Pacote[3][DATA] mensagem:[sem] originario do no 4 recebido pelo no 3
+
+Pacote[3][DATA]chegou ao destino final 3
+
+Pacote[10][DATA] mensagem:[fio] originario do no 1 recebido pelo no 2
+
+Pacote[10][DATA] mensagem:[fio] originario do no 2 recebido pelo no 4
+
+Pacote[10][DATA] mensagem:[fio] originario do no 4 recebido pelo no 3
+
+Pacote[10][DATA]chegou ao destino final 3
+
+Pacote[4][DATA] mensagem:[bacana] originario do no 2 recebido pelo no 4
+
+Pacote[4][DATA] mensagem:[bacana] originario do no 4 recebido pelo no 3
+
+Pacote[4][DATA]chegou ao destino final 3

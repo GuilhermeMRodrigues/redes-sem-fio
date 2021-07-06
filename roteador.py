@@ -5,7 +5,7 @@ class Roteador(Rede):
         obj.posicao = [posX, posY]
         obj.vizinhos = []
         obj.rotas = {obj.id:obj.id}
-        obj.busy_tone = False
+        obj.busy_tone = 0
         obj.rreq_buffer = [] #processo de descoberta de rotas atraves da inundacao de pacotes do tipo route requests (rreq)    
         obj.rrep_buffer = [] #processo de retorno da rota aprendida para o no de origem
         pass
